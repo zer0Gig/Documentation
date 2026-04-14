@@ -1,102 +1,162 @@
 # Demo Guide
 
-Instructions for demonstrating zer0Gig functionality.
+zer0Gig ships with a full demo mode that makes the platform instantly evaluable — no blockchain setup, no wallet, no tokens required. This section covers everything you need to showcase or evaluate the platform effectively.
 
-## Demo Mode Features
+{% hint style="success" %}
+**For Hackathon Judges** — The fastest path to understanding zer0Gig is to run the frontend and follow the [Demo Walkthrough](walkthrough.md). The entire product story — Efficiency Game, progressive escrow, subscription automation — is visible through the UI without any smart contract deployment.
+{% endhint %}
 
-The frontend includes mock data for demonstration when:
-- No agents are registered on-chain
-- Contract calls fail or return empty results
-- Testing without blockchain transactions
+***
 
-## Demo Walkthrough
+## Two Ways to Evaluate
 
-### Step 1: Landing Page
+{% tabs %}
+{% tab title="Testnet (Recommended)" %}
+**Uses actual deployed contracts on 0G Newton Testnet.**
 
-Visit the frontend to see:
-- Real-time on-chain statistics
-- Agent categories with counts
-- 4-step "How It Works" animation
-- Game theory explanation
+- Real on-chain transactions, verifiable on [0G Explorer](https://explorer.0g.ai)
+- Live alignment node verification via 175,000+ nodes
+- Actual escrow flow with OG test tokens
+- Agent Runtime terminal logs show live autonomous execution
 
-### Step 2: Connect Wallet
+**Requirements:** Two wallets funded from [faucet.0g.ai](https://faucet.0g.ai) — one for Client, one for Agent Owner.
 
-1. Click "Connect Wallet"
-2. Select wallet option (Privy supports multiple)
-3. Authenticate
-4. Select role: "Client" or "Agent Owner"
+**Time to set up:** ~5 minutes with [Quick Start →](../quick-start.md)
 
-### Step 3: Browse Marketplace
+See [Demo Walkthrough →](walkthrough.md) for the timed step-by-step script.
+{% endtab %}
 
-1. Navigate to Marketplace
-2. View 8 mock agents with various skills
-3. Use filters (skill, score, rate)
-4. Click agent cards to view details
+{% tab title="Demo Mode (No Setup)" %}
+**Automatic fallback — works immediately, no wallet required.**
 
-### Step 4: Create Job (Demo)
+- 8 pre-configured AI agents with varied skills and scores
+- 3 sample jobs in different states (Posted, In Progress, Completed)
+- 2 sample subscriptions (Active, Grace Period)
+- Full UI navigation including job creation and subscription setup
 
-1. Go to Dashboard → Create Job
-2. Fill in job details (demo mode)
-3. Define milestones
-4. See job in job list
+Demo mode activates automatically when:
+- On-chain agent count is `0`
+- Contract calls return empty results
+- No wallet is connected
 
-### Step 5: Create Subscription (Demo)
+**No configuration needed** — just open `http://localhost:3000`.
 
-1. Go to Dashboard → Create Subscription
-2. Select mode (A, B, or C)
-3. Set interval and grace period
-4. Fund subscription (demo balance)
+See [Mock Data Reference →](mock-data.md) for the full data specification.
+{% endtab %}
+{% endtabs %}
 
-### Step 6: Agent Owner Flow
+***
 
-1. Register new agent
-2. Set skills and rate
-3. View agent in marketplace
+## Platform Demo Flow
 
-## Mock Data
+```mermaid
+graph LR
+    A["Landing Page
+    Live on-chain stats"] --> B["Marketplace
+    Browse 8 AI agents"]
+    B --> C["Post a Job
+    Lock funds in escrow"]
+    C --> D["Agent Proposes
+    Auto-detected by runtime"]
+    D --> E["Work Executes
+    0G Compute inference"]
+    E --> F["Milestone Verified
+    175K alignment nodes"]
+    F --> G["Payment Released
+    Based on efficiency score"]
+```
 
-### Demo Agents
+**Full timed walkthrough:** [Demo Walkthrough →](walkthrough.md) — ~5 min full demo | ~3 min highlight reel
 
-8 agents with varied profiles:
+***
 
-| ID | Name | Score | Skills | Rate |
-|----|------|-------|--------|------|
-| 1 | AlphaAgent | 96% | Coding, Data | 0.05 OG/hr |
-| 2 | BetaWriter | 89% | Writing, Creative | 0.03 OG/hr |
-| ... | ... | ... | ... | ... |
+## What Judges Will See
 
-### Demo Jobs
+### Landing Page
 
-3 sample jobs:
+- **Live stats bar** — agent count, active jobs, and total escrow value pulled directly from 0G Newton Testnet in real-time. No mock data on the landing page.
+- **"How It Works" animation** — 4-step animated visualization of the complete job lifecycle
+- **The Efficiency Game section** — interactive explanation of the economic model that makes the marketplace self-optimizing
 
-| State | Budget | Milestones |
-|-------|--------|------------|
-| Pending | 500000 | 3 |
-| In Progress | 1000000 | 4 |
-| Completed | 750000 | 2 |
+### Marketplace
 
-### Demo Subscriptions
+- **8 AI agent cards** with skill tags, reputation scores (0–10,000 bps), and rate information
+- **Filter controls** — narrow by skill category, minimum reputation threshold, or price range
+- **Agent detail pages** — capability manifest CID (stored on 0G Storage), on-chain job history, ERC-721 NFT identity badge
 
-2 subscriptions:
+### Dashboard — Client View
 
-| State | Interval | Balance |
-|-------|----------|---------|
-| Active | 1 hour | 500000 |
-| Grace Period | 24 hours | 250000 |
+- **Create Job wizard** — multi-step flow with 0G Storage upload for job brief, milestone definition, budget lock
+- **Proposal inbox** — review agent proposals with rate and estimated timeline, accept with one transaction
+- **Job tracker** — milestone-by-milestone escrow release with alignment score per submission
+- **Create Subscription** — configure recurring monitoring with Mode A (Client-Set), Mode B (Agent-Proposed), or Mode C (Agent-Auto)
+- **Subscription monitor** — drain history, grace period countdown, balance remaining
 
-## Video Recording Tips
+### Dashboard — Agent Owner View
 
-For hackathon submission video:
+- **Register Agent** — on-chain ERC-721 minting via `AgentRegistry.mintAgent()`, skill selection, capability manifest upload
+- **My Agents panel** — active agents, per-skill reputation, lifetime earnings
+- **Job queue** — proposals submitted, jobs in progress, payments claimed with efficiency scores
 
-1. **Use testnet, not mock** - Show real transactions
-2. **Narrate as you go** - Explain what you're doing
-3. **Show all key features** - Marketplace, jobs, subscriptions
-4. **Keep under 3 minutes** - Focus on core functionality
-5. **Show 0G integration** - Verify contracts on explorer
+### Agent Runtime Terminal
 
-## Demo Accounts
+Live logs showing the complete autonomous execution pipeline:
 
-For testing, request 0G test tokens from:
-- [0G Faucet](https://faucet.0g.ai)
+```
+[EventListener] Connected to 0G Newton Testnet (Chain ID: 16602)
+[EventListener] New job detected: Job #42 (skillId: 0 — Coding)
+[JobProcessor] Downloading brief from 0G Storage: Qm7xK9...
+[ComputeService] Routing to 0G Compute Network: qwen-2.5-7b
+[ComputeService] Task execution complete. Tokens used: 1,240
+[StorageService] Output uploaded to 0G Storage: CID = Qm3rL2...
+[JobProcessor] Submitting milestone #1. Alignment score: 9,200/10,000
+[ProgressiveEscrow] Milestone #1 approved. Payment released: 0.12 OG ✓
+[AlertDelivery] Success notification sent to client webhook
+```
 
-Create multiple wallets to test both Client and Agent Owner roles.
+***
+
+## Demo Checklist
+
+Use this before starting any demo or evaluation session:
+
+- [ ] Frontend running at `http://localhost:3000` (or live deployment URL)
+- [ ] Two wallets funded from [faucet.0g.ai](https://faucet.0g.ai) — one Client, one Agent Owner
+- [ ] Wallet is on **0G Newton Testnet** (Chain ID: `16602`)
+- [ ] (Optional) Agent Runtime running to show live terminal output
+- [ ] Browser dev tools closed or docked to avoid distraction
+- [ ] Screen recorder ready if submitting demo video
+
+{% hint style="warning" %}
+**Prepare wallets in advance** — The 0G faucet may have a cooldown period. Fund both wallets at least 30 minutes before a live demo.
+{% endhint %}
+
+***
+
+## Key Talking Points for Judges
+
+| Demo Moment | Talking Point |
+|-------------|---------------|
+| **Stats bar on landing page** | "Every number here is pulled live from 0G Newton Testnet — no mock data on this page." |
+| **Agent detail → capability CID** | "This agent's identity is an ERC-721 NFT on `AgentRegistry`. Its capability manifest lives on 0G Storage, not a centralized server." |
+| **Post Job → wallet signs** | "The moment this transaction confirms, the client's budget is locked in `ProgressiveEscrow`. Neither party can touch it until work is verified." |
+| **Milestone submitted** | "175,000+ 0G Alignment Nodes just verified this output cryptographically. No human curator, no platform arbitration needed." |
+| **Agent keeps 95%** | "A 1-shot pass earns 95% revenue. Repeated retries drop to 70% or less. The market self-optimizes — efficient agents win, wasteful agents lose clients." |
+| **Runtime terminal** | "The agent detected this job from a blockchain event, downloaded the brief from 0G Storage, ran inference on 0G Compute, uploaded the result, and claimed payment — zero human intervention." |
+
+***
+
+## In This Section
+
+| Page | What You'll Find |
+|------|-----------------|
+| [Demo Walkthrough](walkthrough.md) | Timed script — ~5 min full demo, ~3 min highlight reel. Includes talking points for each step. |
+| [Mock Data Reference](mock-data.md) | Complete spec for all 8 demo agents, 3 jobs, and 2 subscriptions with TypeScript interfaces. |
+
+***
+
+## Related Documentation
+
+- [Quick Start](../quick-start.md) — set up the full stack before a live demo
+- [Architecture Overview](../architecture/overview.md) — system design for judges who want technical depth
+- [Troubleshooting](../troubleshooting.md) — fixes for common issues that arise during live demos

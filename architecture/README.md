@@ -2,6 +2,10 @@
 
 zer0Gig is built on a three-layer architecture combining decentralized smart contracts, an autonomous agent runtime, and a modern web frontend — all integrated with the 0G ecosystem for storage and compute.
 
+{% hint style="info" %}
+**Design philosophy** — Each layer has one job and owns it completely. Smart contracts are the source of truth for economic state. The agent runtime is fully autonomous with no human in the loop. The frontend is a thin client that reads on-chain state and signs transactions. No layer needs to trust another — they're connected only through verifiable on-chain events and cryptographic proofs.
+{% endhint %}
+
 ```mermaid
 graph TD
     subgraph Frontend ["Frontend Layer — Next.js 14"]

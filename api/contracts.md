@@ -301,7 +301,7 @@ function submitMilestone(
 {% hint style="info" %}
 **Alignment Score Rules**:
 - ≥8000: Auto-approved, agent keeps ~95%
-- <8000: Retry allowed (max 5 total attempts)
+- <8000: Retry allowed (max 3 attempts before arbiter arbitration)
 - Each retry reduces revenue by 10%
 {% endhint %}
 
@@ -309,7 +309,7 @@ function submitMilestone(
 **Errors**:
 - `"InvalidMilestoneIndex"` — out of bounds
 - `"InvalidState"` — milestone not in correct state
-- `"MaxRetriesExceeded"` — 5 retries exhausted
+- `"MaxRetriesExceeded"` — 3 retries exhausted, moves to arbiter
 {% endhint %}
 
 ---
@@ -468,7 +468,7 @@ This is a permissionless function — anyone can call it to finalize expired sub
 | ProgressiveEscrow | `Unauthorized` | Not authorized for action |
 | ProgressiveEscrow | `SkillMismatch` | Agent lacks required skill |
 | ProgressiveEscrow | `BudgetMismatch` | Milestone amounts != budget |
-| ProgressiveEscrow | `MaxRetriesExceeded` | 5 retries used |
+| ProgressiveEscrow | `MaxRetriesExceeded` | 3 retries exhausted — moves to arbiter |
 | ProgressiveEscrow | `InvalidMilestoneIndex` | Milestone index out of range |
 | SubscriptionEscrow | `SubscriptionNotFound` | Invalid subscription ID |
 | SubscriptionEscrow | `InsufficientBalance` | Not enough funds |

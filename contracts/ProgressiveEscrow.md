@@ -34,7 +34,7 @@ stateDiagram-v2
     MilestoneSubmitted --> RetryAvailable: alignmentScore < 8000
     RetryAvailable --> MilestoneSubmitted: resubmitMilestone()
     RetryAvailable --> MilestoneApproved: alignmentScore >= 8000 (after retries)
-    RetryAvailable --> Dispute: 5 retries exhausted
+    RetryAvailable --> Dispute: 3 retries exhausted
     
     MilestoneApproved --> AllComplete?: Check remaining milestones
     AllComplete? --> InProgress: More milestones pending
@@ -213,9 +213,9 @@ function submitMilestone(
 - `alignmentScore`: Quality score (0-10000 basis points)
 
 {% hint style="info" %}
-- Score ≥ 8000 (80%): milestone auto-approved
-- Score < 8000: agent retries (max 5 total attempts)
-- Each retry incurs 10% fee penalty
+- Score ≥ 8000 (80%): milestone auto-approved, agent keeps ~95%
+- Score < 8000: agent retries (max 3 attempts before arbiter arbitration)
+- Each retry incurs a 10% fee penalty on the escrow amount
 {% endhint %}
 
 ### claimPayment()
@@ -255,7 +255,7 @@ sequenceDiagram
         ProgressiveEscrow->>ProgressiveEscrow: Auto-approve
         ProgressiveEscrow-->>Agent: MilestoneApproved event
     else score < 8000
-        ProgressiveEscrow->>Agent: Retry (max 5x)
+        ProgressiveEscrow->>Agent: Retry (max 3 attempts)
     end
 ```
 
@@ -277,7 +277,7 @@ sequenceDiagram
 | `Unauthorized` | "Not authorized for this action" | Wrong caller |
 | `SkillMismatch` | "Agent does not have required skill" | Skill verification failed |
 | `BudgetMismatch` | "Milestone amounts must equal budget" | Sum validation |
-| `MaxRetriesExceeded` | "Maximum retries for milestone" | 5 retries exhausted |
+| `MaxRetriesExceeded` | "Maximum retries for milestone" | 3 retries exhausted — moves to arbiter |
 | `InvalidMilestoneIndex` | "Invalid milestone index" | Out of bounds |
 
 ## Events

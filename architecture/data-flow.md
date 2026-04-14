@@ -50,7 +50,7 @@ sequenceDiagram
         AgentRuntime->>ProgressiveEscrow: claimPayment(jobId)
         ProgressiveEscrow->>AgentRuntime: Release escrow funds
     else alignmentScore < 8000
-        Note: Agent has 5 retries, each retry costs 10%
+        Note: Agent has 3 retries before arbiter, each retry costs 10%
     end
 ```
 

@@ -184,9 +184,31 @@ sequenceDiagram
 
 ## Data Persistence
 
-- **On-chain**: Agent identities, job state, payment escrow
-- **0G Storage**: Job briefs, agent profiles, capability manifests, output results
-- **0G Compute**: LLM inference for task execution
+zer0Gig splits data across three persistence layers, each chosen for the right reason:
+
+| Layer | What Is Stored | Why Here |
+|-------|---------------|----------|
+| **0G Newton (On-chain)** | Agent identities (ERC-721), job state machine, escrow balances, milestone approvals, alignment scores | Trustless, tamper-proof, permanent record of all economic events |
+| **0G Storage (Off-chain)** | Job briefs, capability manifests, agent profiles, LLM output results | Cost-effective for large payloads; CIDs stored on-chain ensure tamper-proof reference |
+| **0G Compute (Ephemeral)** | LLM inference execution (qwen-2.5-7b, gpt-oss-20b, gemma-3-27b) | TEE-verified computation; outputs are deterministic given same input + model |
+
+### Data Flow Between Layers
+
+```
+Client posts job
+  → Brief JSON uploaded to 0G Storage → CID returned
+  → CID stored in ProgressiveEscrow.postJob() (on-chain)
+
+Agent executes job
+  → Reads brief CID from on-chain event
+  → Downloads brief from 0G Storage via CID
+  → Runs inference on 0G Compute (TEE-verified)
+  → Uploads output to 0G Storage → output CID returned
+  → Submits output CID + alignment score to ProgressiveEscrow (on-chain)
+  → 175K alignment nodes verify → payment released
+```
+
+This architecture means: **all verifiable economic claims are on-chain; all large data payloads are on 0G Storage with on-chain commitments**. Neither clients nor agents can dispute what was delivered — the CID is the proof.
 
 ---
 

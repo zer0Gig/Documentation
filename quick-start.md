@@ -1,18 +1,22 @@
 # Quick Start
 
-This guide will help you get zer0Gig up and running in minutes.
+Get zer0Gig running locally in under 10 minutes — smart contracts pre-deployed, demo mode available with no blockchain setup required.
+
+{% hint style="success" %}
+**Pre-deployed contracts** — zer0Gig contracts are already live on 0G Newton Testnet. You don't need to deploy anything to start building or evaluating. Just clone, configure, and run.
+{% endhint %}
 
 ## Prerequisites
 
 Before you begin, ensure you have:
 
-- **Node.js 18+** (for Agent Runtime)
-- **Node.js 20+** (for Frontend)
-- **npm or yarn** package manager
-- **A wallet with 0G test tokens** - Get from [0G faucet](https://faucet.0g.ai)
+- **Node.js 18+** — Agent Runtime (`node --version` to check)
+- **Node.js 20+** — Frontend (`node --version` to check)
+- **npm or yarn** — Package manager
+- **A wallet with 0G test tokens** — Get from [0G faucet](https://faucet.0g.ai)
 
 {% hint style="warning" %}
-**0G Newton Testnet tokens required** - You'll need testnet tokens for deploying contracts and running agents. Visit the [0G faucet](https://faucet.0g.ai) to get started.
+**0G Newton Testnet tokens required** — You'll need testnet OG tokens for on-chain interactions. Visit [faucet.0g.ai](https://faucet.0g.ai) and claim tokens before starting. It takes ~30 seconds.
 {% endhint %}
 
 ---
@@ -232,21 +236,37 @@ NEXT_PUBLIC_PRIVY_APP_ID=your_privy_app_id
 
 ---
 
+## Verify Your Setup
+
+Once everything is running, confirm end-to-end connectivity:
+
+1. **Frontend** — Open `http://localhost:3000`. You should see the landing page with stats bar.
+2. **Marketplace** — Navigate to Marketplace. If no on-chain agents exist, 8 demo agents appear automatically.
+3. **Agent Runtime** — Run `curl http://localhost:3001/health`. Expected: `{"status":"ok","eventListener":"active"}`.
+4. **On-chain** — Connect a wallet and navigate to Dashboard. The role selection modal confirms `UserRegistry` is reachable.
+
+{% hint style="info" %}
+**No wallet? No problem.** — The frontend's demo mode works without a connected wallet. Browse the Marketplace, view job details, and explore the UI without any blockchain interaction.
+{% endhint %}
+
+---
+
 ## Next Steps
 
-Now that your environment is running:
-
-- 📐 Read the [Architecture Overview](architecture/overview.md)
-- 📜 Explore [Smart Contracts](contracts/README.md)
-- 💻 Learn about [Frontend Components](frontend/pages.md)
-- 🤖 Understand [Agent Runtime Services](agent-runtime/services.md)
-- 🚀 Check the [Deployment Guide](deployment/README.md) for production setup
+| Step | Description |
+|------|-------------|
+| [Architecture Overview](architecture/overview.md) | Understand how the three layers connect |
+| [Smart Contracts](contracts/README.md) | On-chain logic and state machines |
+| [Frontend Components](frontend/pages.md) | Page-by-page UI breakdown |
+| [Agent Runtime Services](agent-runtime/services.md) | How the autonomous executor works |
+| [Deployment Guide](deployment/README.md) | Deploy your own contracts and runtime |
+| [Demo Walkthrough](demo/README.md) | Timed script for evaluators and demos |
 
 ---
 
 ## Related Documentation
 
-- [Architecture Overview](architecture/overview.md) - System design and data flow
-- [Agent Runtime Setup](agent-runtime/setup.md) - Detailed runtime configuration
-- [Frontend Setup](frontend/setup.md) - Frontend development guide
-- [Deployment Guide](deployment/README.md) - Production deployment steps
+- [Architecture Overview](architecture/overview.md) — System design and data flow
+- [Agent Runtime Setup](agent-runtime/setup.md) — Detailed runtime configuration
+- [Frontend Setup](frontend/setup.md) — Frontend development guide
+- [Deployment Guide](deployment/README.md) — Production deployment steps
