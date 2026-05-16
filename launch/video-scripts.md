@@ -2,7 +2,7 @@
 Date Created: 2026-05-11
 Date Modified: 2026-05-11
 Title: zer0Gig Video Scripts — How It Works + Pitch Video
-Audience: Hans, Dave, anyone recording video content for the hackathon submission
+Audience: Hans, Natalie (editorial review), Dex / Dave (docs cross-reference), anyone recording video content for the hackathon submission
 ---
 
 # Video Scripts — Two Videos, Two Audiences
@@ -194,7 +194,7 @@ You don't need to record every clip twice. The two videos share these primitives
 
 Before publishing either video:
 
-1. Hans + Dave do a private watch-through, write feedback in shared doc
+1. Hans + Natalie (editor) do a private watch-through, write feedback in shared doc
 2. Re-record any segment scoring < 7/10 for clarity
 3. Tighten cuts — every video should feel 10-20% shorter than the script length
 4. Caption check — every contract address, every URL must be in subtitles correctly

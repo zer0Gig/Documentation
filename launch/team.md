@@ -1,6 +1,6 @@
 ---
 Date Created: 2026-05-11
-Date Modified: 2026-05-11
+Date Modified: 2026-05-16
 Title: Why Our Team — The Unfair Advantage
 Audience: Pitch video viewers, investors, judges, anyone asking "why these founders?"
 ---
@@ -19,29 +19,39 @@ We're a small team that **shipped the first production deployment of two unmerge
 
 ---
 
-## Founders
+## Founder
 
-### Hans Gunawan — Founder, PM, Frontend, Agentic Economy Layer
+### Hans Gunawan — Founder, PM, Frontend, Smart Contracts, Agent Runtime, Agentic Economy Layer
 
-- **Background:** UKDW (Universitas Kristen Duta Wacana) — Indonesia. Builder with full-stack chops; daily-shipping discipline.
-- **Role on zer0Gig:** product direction, frontend architecture, economic model design, daily marketing cadence, partnerships
+- **Background:** UKDW (Universitas Kristen Duta Wacana) — Indonesia. Full-stack builder with smart-contract + autonomous-agent engineering chops; daily-shipping discipline.
+- **Role on zer0Gig:** product direction, full-stack engineering (frontend, Solidity contracts, Node.js agent runtime), economic model design, daily marketing cadence, partnerships
 - **Track record evidence:**
-  - 7 weeks from project initiation to mainnet-ready ERC-7857 + ERC-8183 deployment
+  - 7 weeks from project initiation to **mainnet deployment**: 6 contracts (ERC-7857 + ERC-8183) deployed and verified on 0G Aristotle mainnet 2026-05-16
+  - Migrated the contract stack from ERC-721 to ERC-7857 + ERC-8183 in a single sprint without breaking the frontend
+  - Built the **17-service autonomous agent runtime** — the first agent runtime native to 0G (compute, storage, KV, alignment all wired)
+  - Handled the encryption layer end-to-end (ECIES briefs, sealed AES keys for ERC-7857 transfers, alignment ECDSA signing)
   - Daily marketing cadence (POSTON-X day 1 through day 13, continuing)
   - 35-document technical reference shipped end-to-end
   - Live demo received by UKDW kaprodi (head of computing) Halim Budi Santoso on 2026-05-11
-- **Domain insight:** Indonesia's AI builder community is large, growing, and underserved by Western platforms. Hans's local network = a distribution channel competitors can't replicate.
+- **Domain insight:** Indonesia's AI builder community is large, growing, and underserved by Western platforms. Hans's local network = a distribution channel competitors can't replicate. Rare combination of smart-contract engineering + autonomous agent runtime engineering — most Web3 hires do one or the other; Hans does both.
 - **Links:** [LinkedIn](https://www.linkedin.com/in/hans-gunawan01/) · GitHub: [github.com/zer0Gig](https://github.com/zer0Gig)
 
-### Dave — Smart Contracts, Agent Runtime
+## Documentation & Editorial
 
-- **Role on zer0Gig:** Solidity contracts (AgentRegistry, ProgressiveEscrow, SubscriptionEscrow, UserRegistry), Node.js autonomous agent runtime, 0G ecosystem integration
-- **Track record evidence:**
-  - Four contracts deployed, verified, and live on 0G Newton testnet since 2026-04-28
-  - Migrated from ERC-721 to ERC-7857 + ERC-8183 in a single sprint without breaking the frontend
-  - Built the 17-service agent runtime — the first autonomous AI agent runtime native to 0G
-  - Handled the encryption layer (ECIES briefs, sealed AES keys for ERC-7857 transfers, alignment ECDSA signing)
-- **Domain insight:** rare combination of smart-contract engineering + autonomous agent runtime engineering. Most Web3 hires do one or the other; Dave does both.
+### Dex — Documentator
+
+- **Role on zer0Gig:** technical documentation, developer-facing reference material, knowledge-base curation
+- **Why this matters:** zer0Gig ships 35+ technical documents across architecture, API, contracts, and runtime. Comprehensive documentation is what turns a hackathon prototype into a credible production protocol. Dex's contributions make the whole stack readable end-to-end for engineers evaluating zer0Gig.
+
+### Dave — Documentator
+
+- **Role on zer0Gig:** technical documentation, codebase walkthroughs, deployment runbooks
+- **Why this matters:** Dave's documentation work covers the smart-contract architecture deep dive, agent-runtime service map, and the cross-network deployment runbook — the artifacts judges actually read first.
+
+### Natalie — Editor
+
+- **Role on zer0Gig:** editorial review, pitch language, narrative consistency across docs, video scripts, and external communications
+- **Why this matters:** technical teams routinely lose the "why" in walls of "what." Natalie keeps the zer0Gig narrative sharp — the Indonesia thesis, the asset-not-tool reframe, the V1/V2/V3 roadmap — consistent across every surface from README to pitch video to investor email.
 
 ---
 
@@ -135,7 +145,7 @@ The window to be the first production implementation is **right now**. A year fr
 | ERC-7857 + ERC-8183 specs may change before finalization | We track EIP discussions weekly. Migration scripts are part of the contracts repo. |
 | 0G ecosystem is still early — fewer users than Ethereum mainnet | Testnet is our beachhead. Mainnet launch coordinated with 0G mainnet rollout. |
 | Alignment Node decentralization is a long-term goal, not Day 1 | Today: single verifier. Roadmap: multi-verifier consensus, plus reputation slashing. Disclosed transparently in pitch. |
-| Two-person founding team is small for scaling | Indonesian engineering hiring pipeline through UKDW alumni network is one of Hans's GTM levers. |
+| Lean 4-person team (1 builder + 2 documentators + 1 editor) is small for scaling | Indonesian engineering hiring pipeline through UKDW alumni network is one of Hans's GTM levers. The current shape is intentional — engineering decisions stay coherent under one builder while docs and narrative scale in parallel. |
 | Agent-runtime is novel software — bugs will surface in production | Cross-restart memory persistence proven via `e2e-memory-persistence.js` test. EventWatcher fallback for RPC filter drops. Continuous monitoring via Telegram bot for client subscriptions. |
 
 ---

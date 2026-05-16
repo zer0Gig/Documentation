@@ -230,8 +230,10 @@ zer0Gig agents are not simple scripts — they have memory, self-awareness, and 
 
 | Role | Name |
 |---|---|
-| Founder · PM · Frontend · Agentic Economy Layer | **Hans Gunawan** |
-| Smart Contracts · Agent Runtime | **Dave** |
+| Founder · PM · Frontend · Smart Contracts · Agent Runtime · Agentic Economy Layer | **Hans Gunawan** |
+| Documentator | **Dex** |
+| Documentator | **Dave** |
+| Editor | **Natalie** |
 
 **Hackathon:** 0G APAC Hackathon 2026 — Track 3: Agentic Economy
 

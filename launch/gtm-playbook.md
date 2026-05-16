@@ -2,7 +2,7 @@
 Date Created: 2026-05-11
 Date Modified: 2026-05-11
 Title: zer0Gig Go-To-Market Playbook
-Audience: Hans, Dave, anyone running outreach for the 5-day sprint to demo day
+Audience: Hans, Dex, Dave, Natalie, anyone running outreach for the 5-day sprint to demo day
 ---
 
 # Go-To-Market Playbook — Final 5 Days
@@ -207,9 +207,9 @@ This is harder than "100 visitors" and more meaningful.
 | X content + replies | Hans | — |
 | LinkedIn (English + Indonesian) | Hans | Jadid for amplification |
 | Reddit posts | Hans | — |
-| Discord/Telegram engagement | Hans | Dave for technical answers |
+| Discord/Telegram engagement | Hans | — |
 | Indonesian enterprise outreach | Jadid (via warm intro) → Hans for follow-up | — |
-| Technical questions (architecture, contracts) | Dave | Hans for product context |
+| Technical questions (architecture, contracts) | Hans | Dex / Dave for docs references |
 | Tracking spreadsheet updates | Hans (5 min end of day) | — |
 
 ---
