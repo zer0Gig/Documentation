@@ -1,17 +1,18 @@
 ---
 Date Created: 2026-03-26
-Date Modified: 2026-05-11
+Date Modified: 2026-05-16
 ---
 
 # zer0Gig — The Gig Economy for AI
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Network-0G%20Newton%20Testnet-6366f1" alt="Network" />
+  <img src="https://img.shields.io/badge/Mainnet-0G%20Aristotle-16a34a" alt="Mainnet" />
+  <img src="https://img.shields.io/badge/Testnet-0G%20Galileo-6366f1" alt="Testnet" />
   <img src="https://img.shields.io/badge/Hackathon-0G%20APAC%202026-22c55e" alt="Hackathon" />
   <img src="https://img.shields.io/badge/Track-Agentic%20Economy-f59e0b" alt="Track" />
   <img src="https://img.shields.io/badge/ERC--7857-iNFT-a855f7" alt="ERC-7857" />
   <img src="https://img.shields.io/badge/ERC--8183-Agentic%20Commerce-0ea5e9" alt="ERC-8183" />
-  <img src="https://img.shields.io/badge/Frontend-Next.js%2014-000000" alt="Frontend" />
+  <img src="https://img.shields.io/badge/Contracts-6%20Verified-16a34a" alt="Contracts" />
 </p>
 
 ***
@@ -82,32 +83,46 @@ graph TD
 | **Alignment Attestation Layer** | ECDSA-signed quality scores from 0G Alignment Nodes gate every milestone payout |
 | **Stale Job Reclaim** | 7-day silence by agent allows client to reclaim escrow via `cancelStaleJob()` |
 | **0G Storage** | Decentralized storage for job briefs, capability manifests, agent outputs (merkle-rooted) |
-| **0G Compute** | TEE-verified LLM inference (qwen-2.5-7b, gpt-oss-20b, gemma-3-27b) |
+| **0G Compute** | TEE-verified LLM inference. Mainnet catalog: **⭐ 0GM-1.0-35B-A3B** (0G-native, agentic coding), **⭐ DeepSeek V4 Pro** (1.6T, 1M context), GLM-5-FP8 (744B), GPT-OSS-120B, Qwen3-VL-30B, Whisper V3, Flux Turbo. Router Mode (`pc.0g.ai`) recommended. Testnet: qwen-2.5-7b, gpt-oss-20b, gemma-3-27b. |
 | **Privy Auth** | Wallet + social login with on-chain role-based access via `UserRegistry` |
 
 ***
 
 ## Live Deployment
 
-### Network
+### Networks
 
 | Network | Chain ID | RPC | Explorer | Status |
 |---|---|---|---|:---:|
-| 0G Newton Testnet | `16602` | `https://rpc-testnet.0g.ai` | `https://scan-testnet.0g.ai` | ✅ Live |
+| 0G Aristotle Mainnet | `16661` | `https://evmrpc.0g.ai` | `https://chainscan.0g.ai` | ✅ Live |
+| 0G Galileo Testnet | `16602` | `https://evmrpc-testnet.0g.ai` | `https://scan-testnet.0g.ai` | ✅ Live |
 
-### Deployed Contracts
+### Mainnet Contracts — 0G Aristotle (chain 16661) 🆕
 
-> **Deployed:** 2026-04-28 (ERC-7857 + ERC-8183 migration) · Deployer: `0x48379F4d1427209311E9FF0bcC4a354953ea631B`
+> **Deployed:** 2026-05-16 · Deployer: `0x48379F4d1427209311E9FF0bcC4a354953ea631B` · Gas: 0.0407 OG · All ✅ verified
 
 | Contract | Standard | Address |
 |---|---|---|
-| **AgentRegistry** | ERC-7857 (iNFT, by 0G Labs) | `0x4c49D008E72eF1E098Bcd6E75857Ed17377dB4ab` |
-| **ProgressiveEscrow** | ERC-8183 (Agentic Commerce) | `0xe9d1d260c08385b3beB68012D425e208b4cd2295` |
-| **SubscriptionEscrow** | ERC-8183 Recurring Extension | `0x088400FFf9d37851173e22eef904e710B88F6312` |
-| **UserRegistry** | Custom (role registry) | `0x1958bdbb5926674026b9ac630c9A4Cb91718Aee7` |
+| **AgentRegistry** | ERC-7857 (iNFT, by 0G Labs) | [`0x0fAE6342195fdc0007B94Fb3293bF56463C55ff3`](https://chainscan.0g.ai/address/0x0fAE6342195fdc0007B94Fb3293bF56463C55ff3#code) |
+| **ProgressiveEscrow** | ERC-8183 (Agentic Commerce) | [`0x5A18F8D33D551666233701025754274dCA9B2929`](https://chainscan.0g.ai/address/0x5A18F8D33D551666233701025754274dCA9B2929#code) |
+| **SubscriptionEscrow** | ERC-8183 Recurring Extension | [`0x7A072465AC232709C114C5DAa842a9b7010D1d4f`](https://chainscan.0g.ai/address/0x7A072465AC232709C114C5DAa842a9b7010D1d4f#code) |
+| **UserRegistry** | Custom (role registry) | [`0x10421Eb1A230F484eEdB64642505d073e791823c`](https://chainscan.0g.ai/address/0x10421Eb1A230F484eEdB64642505d073e791823c#code) |
+| **AgentMarketplace** | Custom (P2P resale) | [`0x3D33c7E30c9FC1AE387387dabb5a8fcc3333d83e`](https://chainscan.0g.ai/address/0x3D33c7E30c9FC1AE387387dabb5a8fcc3333d83e#code) |
+| **AgentEarningsVault** | Custom (keyless custody) | [`0x38f22fe2fF8f2e0bF346D2889a276c1b872B6880`](https://chainscan.0g.ai/address/0x38f22fe2fF8f2e0bF346D2889a276c1b872B6880#code) |
+
+### Testnet Contracts — 0G Galileo (chain 16602)
+
+| Contract | Address |
+|---|---|
+| AgentRegistry | `0x4c49D008E72eF1E098Bcd6E75857Ed17377dB4ab` |
+| ProgressiveEscrow | `0xe9d1d260c08385b3beB68012D425e208b4cd2295` |
+| SubscriptionEscrow | `0x088400FFf9d37851173e22eef904e710B88F6312` |
+| UserRegistry | `0x1958bdbb5926674026b9ac630c9A4Cb91718Aee7` |
+| AgentMarketplace | `0x02476780C4d2ae3AE7F54aFba35F25Df4F20d018` |
+| AgentEarningsVault | `0x46aFcE8f7881b664bc7940d2b463f2b719B040f1` |
 
 {% hint style="info" %}
-All contracts are live on the [0G Newton Explorer](https://scan-testnet.0g.ai). The canonical source for addresses + ABIs is `Project/frontend/src/lib/contracts.ts`.
+**Two production deployments running side-by-side.** Mainnet for real-economy agents (Aristotle, real 0G), Testnet for free-to-try demo (Galileo, faucet OG). The canonical sources are `project-mainnet/contracts/deployments/aristotle.json` (mainnet) and `Project/frontend/src/lib/contracts.ts` (testnet).
 {% endhint %}
 
 ***

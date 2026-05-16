@@ -1,34 +1,50 @@
 ---
 Date Created: 2026-03-26
-Date Modified: 2026-05-11
+Date Modified: 2026-05-16
 ---
 
 # Contract Deployment
 
-Guide for deploying zer0Gig smart contracts to 0G Newton Testnet.
+Guide for deploying zer0Gig smart contracts to 0G networks.
 
 {% hint style="info" %}
-**Prerequisites:** Private key with testnet OG, Node.js 18+, npm
+**Prerequisites:** Private key with OG (testnet from `faucet.0g.ai`, or mainnet from a CEX withdrawal), Node.js 18+, npm
 {% endhint %}
 
 ## Network Configuration
 
-| Network | Chain ID | RPC URL | Explorer |
-|---|---|---|---|
-| 0G Newton Testnet | `16602` | `https://rpc-testnet.0g.ai` | `https://scan-testnet.0g.ai` |
+| Network | Chain ID | RPC URL | Explorer | Status |
+|---|---|---|---|:---:|
+| 0G Aristotle Mainnet | `16661` | `https://evmrpc.0g.ai` | `https://chainscan.0g.ai` | ✅ Live |
+| 0G Galileo Testnet | `16602` | `https://evmrpc-testnet.0g.ai` | `https://scan-testnet.0g.ai` | ✅ Live |
 
-## Current Deployment
+## Current Deployment — 0G Aristotle Mainnet (NEW)
 
-> **Deployed:** 2026-04-28 (ERC-7857 + ERC-8183 migration) · Deployer: `0x48379F4d1427209311E9FF0bcC4a354953ea631B`
+> **Deployed:** 2026-05-16 · Deployer: `0x48379F4d1427209311E9FF0bcC4a354953ea631B` · Gas: 0.0407 OG total · All 6 contracts ✅ verified on chainscan.0g.ai
 
 | Contract | Address | Standard |
 |---|---|---|
-| **AgentRegistry** | `0x4c49D008E72eF1E098Bcd6E75857Ed17377dB4ab` | ERC-7857 |
-| **ProgressiveEscrow** | `0xe9d1d260c08385b3beB68012D425e208b4cd2295` | ERC-8183 |
-| **SubscriptionEscrow** | `0x088400FFf9d37851173e22eef904e710B88F6312` | ERC-8183 Recurring Ext |
-| **UserRegistry** | `0x1958bdbb5926674026b9ac630c9A4Cb91718Aee7` | Custom |
+| **AgentRegistry** | [`0x0fAE6342195fdc0007B94Fb3293bF56463C55ff3`](https://chainscan.0g.ai/address/0x0fAE6342195fdc0007B94Fb3293bF56463C55ff3#code) | ERC-7857 |
+| **ProgressiveEscrow** | [`0x5A18F8D33D551666233701025754274dCA9B2929`](https://chainscan.0g.ai/address/0x5A18F8D33D551666233701025754274dCA9B2929#code) | ERC-8183 |
+| **SubscriptionEscrow** | [`0x7A072465AC232709C114C5DAa842a9b7010D1d4f`](https://chainscan.0g.ai/address/0x7A072465AC232709C114C5DAa842a9b7010D1d4f#code) | ERC-8183 Recurring Ext |
+| **UserRegistry** | [`0x10421Eb1A230F484eEdB64642505d073e791823c`](https://chainscan.0g.ai/address/0x10421Eb1A230F484eEdB64642505d073e791823c#code) | Custom |
+| **AgentMarketplace** | [`0x3D33c7E30c9FC1AE387387dabb5a8fcc3333d83e`](https://chainscan.0g.ai/address/0x3D33c7E30c9FC1AE387387dabb5a8fcc3333d83e#code) | Custom (P2P resale) |
+| **AgentEarningsVault** | [`0x38f22fe2fF8f2e0bF346D2889a276c1b872B6880`](https://chainscan.0g.ai/address/0x38f22fe2fF8f2e0bF346D2889a276c1b872B6880#code) | Custom (keyless custody) |
 
-> **Canonical source:** `Project/frontend/src/lib/contracts.ts`. Update this file whenever you redeploy.
+## Galileo Testnet Deployment (parallel)
+
+> **Deployed:** 2026-04-28 / 2026-05-12 · Same deployer
+
+| Contract | Address |
+|---|---|
+| AgentRegistry | `0x4c49D008E72eF1E098Bcd6E75857Ed17377dB4ab` |
+| ProgressiveEscrow | `0xe9d1d260c08385b3beB68012D425e208b4cd2295` |
+| SubscriptionEscrow | `0x088400FFf9d37851173e22eef904e710B88F6312` |
+| UserRegistry | `0x1958bdbb5926674026b9ac630c9A4Cb91718Aee7` |
+| AgentMarketplace | `0x02476780C4d2ae3AE7F54aFba35F25Df4F20d018` |
+| AgentEarningsVault | `0x46aFcE8f7881b664bc7940d2b463f2b719B040f1` |
+
+> **Canonical source:** `project-mainnet/contracts/deployments/aristotle.json` (mainnet) and `Project/frontend/src/lib/contracts.ts` (testnet).
 
 ## Deployment Process
 
